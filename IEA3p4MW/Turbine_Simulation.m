@@ -43,16 +43,22 @@ for iOP=1:nOP
     
     % collect simulation Data
     Omega(:,iOP) = logsout.get('y').Values.Omega.Data;
+    Power_el(:,iOP) = logsout.get('y').Values.P_el.Data;
  
 end
 
 
 %% PostProcessing SLOW
 figure
+
+subplot(211)
 hold on;box on;grid on;
 plot(tout,Omega*60/2/pi)
 ylabel('\Omega [rpm]')
 legend(strcat(num2str(OPs'),' m/s'))
 
-
- 
+subplot(212)
+hold on;box on;grid on;
+plot(tout,Power_el./1000)
+ylabel('Power [kW]')
+legend(strcat(num2str(OPs'),' m/s')) 
