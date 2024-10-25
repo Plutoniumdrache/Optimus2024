@@ -22,14 +22,14 @@ Parameter.Time.TMax             = 60;   % [s] simulation length
 OPs = [12 16 20 24];
 nOP = length(OPs);
 
-for iOP=1:nOP
+for iOP=1:nOP   
     
     % get Operation Point
     OP = OPs(iOP);
 
     % wind for this OP
     Disturbance.v_0.time            = [0; 30; 30+dt;  60];       % [s]      time points to change wind speed
-    Disturbance.v_0.signals.values  = [0;  0;       0; 0]+OP;    % [m/s]    wind speeds
+    Disturbance.v_0.signals.values  = [0;  0; 0.0; 0.0]+OP;    % [m/s]    wind speeds
 
     % Initial Conditions from SteadyStates for this OP
     SteadyStates = load('SteadyStates_FBv1_SLOW2DOF','v_0','Omega','theta','M_g','x_T');                       

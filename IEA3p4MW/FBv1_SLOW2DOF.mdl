@@ -46,8 +46,8 @@ __MWOPC_PART_BEGIN__ /metadata/coreProperties.xml
   <dcterms:created xsi:type="dcterms:W3CDTF">2008-01-18T09:49:48Z</dcterms:created>
   <dc:creator>Phoenix_Shao</dc:creator>
   <cp:lastModifiedBy>Julius</cp:lastModifiedBy>
-  <dcterms:modified xsi:type="dcterms:W3CDTF">2024-10-25T09:57:50Z</dcterms:modified>
-  <cp:revision>15.7</cp:revision>
+  <dcterms:modified xsi:type="dcterms:W3CDTF">2024-10-25T11:03:08Z</dcterms:modified>
+  <cp:revision>15.10</cp:revision>
   <cp:version>R2022b</cp:version>
 </cp:coreProperties>
 
@@ -125,7 +125,7 @@ __MWOPC_PART_BEGIN__ /simulink/blockdiagram.xml
     <ConfigManagerSettings>
       <P Name="ModifiedByFormat">%&lt;Auto&gt;</P>
       <P Name="ModifiedDateFormat">%&lt;Auto&gt;</P>
-      <P Name="ModelVersionFormat">%&lt;AutoIncrement:15.7&gt;</P>
+      <P Name="ModelVersionFormat">%&lt;AutoIncrement:15.10&gt;</P>
     </ConfigManagerSettings>
     <EditorSettings>
       <P Name="LibraryLinkDisplay">all</P>
@@ -1770,8 +1770,8 @@ Dynamic</P>
 __MWOPC_PART_BEGIN__ /simulink/modelDictionary.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <MF0 version="1.1" defaultPackage="slid" packageUris="http://schema.mathworks.com/mf0/slid/R2022b_20220222">
-  <System type="System" uuid="8bc38033-b393-4fdd-acd8-af7f1266f7f9">
-    <Interface type="Interface" uuid="c70ac7a3-137a-4491-ad11-d64f5e394957"/>
+  <System type="System" uuid="cdee619e-db3e-44d8-b7d5-05e90432fb9a">
+    <Interface type="Interface" uuid="0353d5e9-3ddc-479c-b2c4-dd4bb391684b"/>
   </System>
 </MF0>
 __MWOPC_PART_BEGIN__ /simulink/plugins/SimscapeModelParametersPlugin.xml
@@ -1783,27 +1783,27 @@ __MWOPC_PART_BEGIN__ /simulink/plugins/SimscapeModelParametersPlugin.xml
 __MWOPC_PART_BEGIN__ /simulink/ScheduleCore.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <sltp_graph version="1.1" packageUris="http://schema.mathworks.com/mf0/sltp_mm/R2022b_202203181029">
-  <sltp.mm.core.Context type="sltp.mm.core.Context" uuid="98ad0e5a-84fe-4faa-be00-204a48ce527b">
+  <sltp.mm.core.Context type="sltp.mm.core.Context" uuid="1c9106de-1b7c-4adc-abbe-f97543179a10">
     <priorityDirection>HighNumberLast</priorityDirection>
     <editorState type="sltp.mm.core.EditorState" uuid="6ef0e0df-616c-4c05-8736-b3c463006397">
       <isSynchronized>true</isSynchronized>
       <panelState type="sltp.mm.core.EditorPanelState" uuid="74ae556f-ea39-4781-9977-fcb927ca3b2c"/>
     </editorState>
-    <rootTask type="sltp.mm.core.Task" uuid="0b0fc483-1f79-4be6-a30e-88349967a75c">
-      <context type="sltp.mm.core.Context" uuid="98ad0e5a-84fe-4faa-be00-204a48ce527b"/>
+    <rootTask type="sltp.mm.core.Task" uuid="6108eb03-1206-4103-a577-ead9b5b581af">
+      <context type="sltp.mm.core.Context" uuid="1c9106de-1b7c-4adc-abbe-f97543179a10"/>
       <explicit>false</explicit>
       <name>Default</name>
       <priority>-2147483648</priority>
-      <subgraph type="sltp.mm.core.Graph" uuid="8249a301-3b27-4650-9849-1fa43f2673d8">
-        <tasks type="sltp.mm.core.Task" uuid="d170ed61-5b80-4953-afdb-3311266a4c73">
+      <subgraph type="sltp.mm.core.Graph" uuid="b9191eed-15df-42d0-906f-a16cc6f4d348">
+        <tasks type="sltp.mm.core.Task" uuid="c8b5ffb5-dcd9-4abd-ad4a-bccb871e8749">
           <baseTask>true</baseTask>
-          <context type="sltp.mm.core.Context" uuid="98ad0e5a-84fe-4faa-be00-204a48ce527b"/>
+          <context type="sltp.mm.core.Context" uuid="1c9106de-1b7c-4adc-abbe-f97543179a10"/>
           <explicit>false</explicit>
           <id>1</id>
           <isTimed>true</isTimed>
           <name>Cont</name>
           <priority>40</priority>
-          <rates type="sltp.mm.core.Rate" uuid="05a37aba-43af-4b98-9f8f-d4c10dae9a78">
+          <rates type="sltp.mm.core.Rate" uuid="bc212887-a990-44e6-b327-38a3cd2f9d68">
             <annotation>Cont</annotation>
             <color>255</color>
             <hasBlocks>true</hasBlocks>
@@ -1813,7 +1813,7 @@ __MWOPC_PART_BEGIN__ /simulink/ScheduleCore.xml
             </rateSpec>
             <sti>0</sti>
           </rates>
-          <rates type="sltp.mm.core.Rate" uuid="72193444-017c-43e8-a495-1b18e653b04d">
+          <rates type="sltp.mm.core.Rate" uuid="c4bafd0a-4056-4a57-92c9-2f1b1e97c98a">
             <annotation>D1</annotation>
             <color>-436207361</color>
             <hasBlocks>true</hasBlocks>
@@ -3344,6 +3344,7 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_7379.xml
 <?xml version="1.0" encoding="utf-8"?>
 <System>
   <P Name="Location">[-1, -7, 1537, 825]</P>
+  <P Name="Open">on</P>
   <Block BlockType="Inport" Name="Omega_g [rad/s]" SID="7380">
     <P Name="Position">[-35, 93, -5, 107]</P>
     <P Name="ZOrder">1171</P>
@@ -3373,17 +3374,6 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_7379.xml
     <PortProperties>
       <Port Type="out" Index="1">
         <P Name="PropagatedSignals">theta</P>
-      </Port>
-    </PortProperties>
-  </Block>
-  <Block BlockType="Sum" Name="Add" SID="7641">
-    <PortCounts in="2" out="1"/>
-    <P Name="Position">[355, -58, 385, -27]</P>
-    <P Name="ZOrder">1194</P>
-    <P Name="IconShape">rectangular</P>
-    <PortProperties>
-      <Port Type="out" Index="1">
-        <P Name="Name">Power step duration</P>
       </Port>
     </PortProperties>
   </Block>
@@ -3424,6 +3414,7 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_7379.xml
   <Block BlockType="ManualSwitch" Name="Manual Switch" SID="7651">
     <P Name="Position">[475, -113, 505, -77]</P>
     <P Name="ZOrder">1203</P>
+    <P Name="CurrentSetting">0</P>
   </Block>
   <Block BlockType="SubSystem" Name="Pitch Controller" SID="7462">
     <PortCounts in="3" out="1"/>
@@ -3438,6 +3429,19 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_7379.xml
     <P Name="ZOrder">1198</P>
     <P Name="Inputs">3</P>
   </Block>
+  <Block BlockType="Product" Name="Product1" SID="7656">
+    <PortCounts in="2" out="1"/>
+    <P Name="Position">[290, -93, 320, -62]</P>
+    <P Name="ZOrder">1208</P>
+  </Block>
+  <Block BlockType="Scope" Name="Scope" SID="7653">
+    <PortCounts in="2"/>
+    <P Name="Position">[510, -39, 540, -6]</P>
+    <P Name="ZOrder">1205</P>
+    <P Name="ScopeSpecificationString">Simulink.scopes.TimeScopeBlockCfg(&apos;CurrentConfiguration&apos;, extmgr.ConfigurationSet(extmgr.Configuration(&apos;Core&apos;,&apos;General UI&apos;,true),extmgr.Configuration(&apos;Core&apos;,&apos;Source UI&apos;,true),extmgr.Configuration(&apos;Sources&apos;,&apos;WiredSimulink&apos;,true),extmgr.Configuration(&apos;Visuals&apos;,&apos;Time Domain&apos;,true,&apos;SerializedDisplays&apos;,{struct(&apos;MinYLimReal&apos;,&apos;-0.125&apos;,&apos;MaxYLimReal&apos;,&apos;1.125&apos;,&apos;YLabelReal&apos;,&apos;&apos;,&apos;MinYLimMag&apos;,&apos;0.00000&apos;,&apos;MaxYLimMag&apos;,&apos;1.125&apos;,&apos;LegendVisibility&apos;,&apos;off&apos;,&apos;XGrid&apos;,true,&apos;YGrid&apos;,true,&apos;PlotMagPhase&apos;,false,&apos;AxesColor&apos;,[0 0 0],&apos;AxesTickColor&apos;,[0.686274509803922 0.686274509803922 0.686274509803922],&apos;ColorOrder&apos;,[1 1 0.0666666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],&apos;Title&apos;,&apos;%&lt;SignalLabel&gt;&apos;,&apos;LinePropertiesCache&apos;,{{}},&apos;UserDefinedChannelNames&apos;,{{}},&apos;NumLines&apos;,2,&apos;LineNames&apos;,{{&apos;Product1&apos;,&apos;Channel 2&apos;}},&apos;ShowContent&apos;,true,&apos;Placement&apos;,1)},&apos;DisplayPropertyDefaults&apos;,struct(&apos;MinYLimReal&apos;,&apos;-0.125&apos;,&apos;MaxYLimReal&apos;,&apos;1.125&apos;,&apos;YLabelReal&apos;,&apos;&apos;,&apos;MinYLimMag&apos;,&apos;0.00000&apos;,&apos;MaxYLimMag&apos;,&apos;1.125&apos;,&apos;LegendVisibility&apos;,&apos;off&apos;,&apos;XGrid&apos;,true,&apos;YGrid&apos;,true,&apos;PlotMagPhase&apos;,false,&apos;AxesColor&apos;,[0 0 0],&apos;AxesTickColor&apos;,[0.686274509803922 0.686274509803922 0.686274509803922],&apos;ColorOrder&apos;,[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration(&apos;Tools&apos;,&apos;Plot Navigation&apos;,true),extmgr.Configuration(&apos;Tools&apos;,&apos;Measurements&apos;,true,&apos;Version&apos;,&apos;2022b&apos;)),&apos;Version&apos;,&apos;2022b&apos;,&apos;Position&apos;,[721 333 560 420])</P>
+    <P Name="NumInputPorts">2</P>
+    <P Name="Floating">off</P>
+  </Block>
   <Block BlockType="Step" Name="Step" SID="7642">
     <P Name="Position">[200, -85, 230, -55]</P>
     <P Name="ZOrder">1195</P>
@@ -3445,7 +3449,7 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_7379.xml
     <P Name="SampleTime">0</P>
   </Block>
   <Block BlockType="Step" Name="Step1" SID="7643">
-    <P Name="Position">[200, -40, 230, -10]</P>
+    <P Name="Position">[200, -45, 230, -15]</P>
     <P Name="ZOrder">1196</P>
     <P Name="Time">32</P>
     <P Name="Before">1</P>
@@ -3595,18 +3599,6 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_7379.xml
     <P Name="Dst">7554#in:1</P>
   </Line>
   <Line>
-    <P Name="ZOrder">37</P>
-    <P Name="Src">7642#out:1</P>
-    <P Name="Points">[58, 0; 0, 20]</P>
-    <P Name="Dst">7641#in:1</P>
-  </Line>
-  <Line>
-    <P Name="ZOrder">38</P>
-    <P Name="Src">7643#out:1</P>
-    <P Name="Points">[53, 0; 0, -10]</P>
-    <P Name="Dst">7641#in:2</P>
-  </Line>
-  <Line>
     <P Name="ZOrder">42</P>
     <P Name="Src">7646#out:1</P>
     <P Name="Dst">7645#in:1</P>
@@ -3616,14 +3608,6 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_7379.xml
     <P Name="Src">7645#out:1</P>
     <P Name="Points">[45, 0]</P>
     <P Name="Dst">7648#in:1</P>
-  </Line>
-  <Line>
-    <P Name="Name">Power step duration</P>
-    <P Name="ZOrder">57</P>
-    <P Name="Labels">[0, 0]</P>
-    <P Name="Src">7641#out:1</P>
-    <P Name="Points">[40, 0; 0, -45]</P>
-    <P Name="Dst">7651#in:2</P>
   </Line>
   <Line>
     <P Name="ZOrder">58</P>
@@ -3637,12 +3621,40 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_7379.xml
     <P Name="Points">[25, 0; 0, 15]</P>
     <P Name="Dst">7651#in:1</P>
   </Line>
+  <Line>
+    <P Name="ZOrder">67</P>
+    <P Name="Src">7642#out:1</P>
+    <P Name="Points">[25, 0; 0, -15]</P>
+    <P Name="Dst">7656#in:1</P>
+  </Line>
+  <Line>
+    <P Name="ZOrder">68</P>
+    <P Name="Src">7643#out:1</P>
+    <P Name="Points">[40, 0]</P>
+    <P Name="Dst">7656#in:2</P>
+  </Line>
+  <Line>
+    <P Name="ZOrder">69</P>
+    <P Name="Src">7656#out:1</P>
+    <P Name="Points">[83, 0]</P>
+    <Branch>
+      <P Name="ZOrder">71</P>
+      <P Name="Points">[0, -10]</P>
+      <P Name="Dst">7651#in:2</P>
+    </Branch>
+    <Branch>
+      <P Name="ZOrder">70</P>
+      <P Name="Points">[0, 45]</P>
+      <P Name="Dst">7653#in:1</P>
+    </Branch>
+  </Line>
   <Annotation SID="7649">
     <P Name="Name">% increase in power</P>
     <P Name="Position">[634, -85, 726, -70]</P>
     <P Name="InternalMargins">[0, 0, 0, 0]</P>
     <P Name="HorizontalAlignment">left</P>
     <P Name="VerticalAlignment">top</P>
+    <P Name="ZOrder">-1</P>
   </Annotation>
   <Annotation SID="7556">
     <P Name="Name">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -7232,10 +7244,9 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_root.xml
 <?xml version="1.0" encoding="utf-8"?>
 <System>
   <P Name="Location">[-1, -7, 1537, 825]</P>
-  <P Name="Open">on</P>
   <P Name="ZoomFactor">175</P>
   <P Name="ReportName">simulink-default.rpt</P>
-  <P Name="SIDHighWatermark">7652</P>
+  <P Name="SIDHighWatermark">7656</P>
   <Block BlockType="BusCreator" Name="Bus&#xA;Creator1" SID="3984">
     <PortCounts in="1" out="1"/>
     <P Name="Position">[560, 399, 565, 471]</P>
@@ -7383,21 +7394,41 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
           <P Name="ViewObjType" Class="char">SimulinkSubsys</P>
           <P Name="LoadSaveID" Class="char">7558</P>
           <P Name="Extents" Class="double">[1875.0, 753.0]</P>
-          <P Name="ZoomFactor" Class="double">1.5</P>
-          <P Name="Offset" Class="double">[23.144099702381254, -40.911428571427876]</P>
-          <P Name="SceneRectInView" Class="double">[23.144099702381254, -40.911428571427876, 1000.0, 401.6]</P>
+          <P Name="ZoomFactor" Class="double">1.4999999999999998</P>
+          <P Name="Offset" Class="double">[23.144099702381197, -40.911428571427876]</P>
+          <P Name="SceneRectInView" Class="double">[23.144099702381197, -40.911428571427876, 1000.0000000000001, 401.6]</P>
         </Object>
         <Object ObjectID="6">
           <P Name="IsActive" Class="logical">1</P>
           <P Name="IsTabbed" Class="logical">1</P>
+          <P Name="ViewObjType" Class="char">SimulinkSubsys</P>
+          <P Name="LoadSaveID" Class="char">7379</P>
+          <P Name="Extents" Class="double">[1487.0, 753.0]</P>
+          <P Name="ZoomFactor" Class="double">1.0</P>
+          <P Name="Offset" Class="double">[-70.532714164929644, -161.66079612184322]</P>
+          <P Name="SceneRectInView" Class="double">[-70.532714164929644, -161.66079612184322, 1189.6, 602.4]</P>
+        </Object>
+        <Object ObjectID="7">
+          <P Name="IsActive" Class="logical">0</P>
+          <P Name="IsTabbed" Class="logical">0</P>
+          <P Name="ViewObjType" Class="char">SimulinkSubsys</P>
+          <P Name="LoadSaveID" Class="char">6884</P>
+          <P Name="Extents" Class="double">[1875.0, 753.0]</P>
+          <P Name="ZoomFactor" Class="double">1.25</P>
+          <P Name="Offset" Class="double">[-0.67619047619086814, -19.774285714285469]</P>
+          <P Name="SceneRectInView" Class="double">[-0.67619047619086814, -19.774285714285469, 1200.0, 481.92]</P>
+        </Object>
+        <Object ObjectID="8">
+          <P Name="IsActive" Class="logical">0</P>
+          <P Name="IsTabbed" Class="logical">0</P>
           <P Name="ViewObjType" Class="char">SimulinkTopLevel</P>
           <P Name="LoadSaveID" Class="char">0</P>
           <P Name="Extents" Class="double">[1875.0, 753.0]</P>
-          <P Name="ZoomFactor" Class="double">1.7499999999999998</P>
-          <P Name="Offset" Class="double">[227.38028011204591, 372.9254341736696]</P>
-          <P Name="SceneRectInView" Class="double">[227.38028011204591, 372.9254341736696, 857.14285714285734, 344.22857142857151]</P>
+          <P Name="ZoomFactor" Class="double">1.7499999999999996</P>
+          <P Name="Offset" Class="double">[227.38028011204597, 372.9254341736696]</P>
+          <P Name="SceneRectInView" Class="double">[227.38028011204597, 372.9254341736696, 857.14285714285734, 344.22857142857151]</P>
         </Object>
-        <Object ObjectID="7">
+        <Object ObjectID="9">
           <P Name="IsActive" Class="logical">0</P>
           <P Name="IsTabbed" Class="logical">0</P>
           <P Name="ViewObjType" Class="char">SimulinkSubsys</P>
@@ -7406,26 +7437,6 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
           <P Name="ZoomFactor" Class="double">1.25</P>
           <P Name="Offset" Class="double">[131.76280143255065, 265.25753323911044]</P>
           <P Name="SceneRectInView" Class="double">[131.76280143255065, 265.25753323911044, 1200.0, 481.92]</P>
-        </Object>
-        <Object ObjectID="8">
-          <P Name="IsActive" Class="logical">0</P>
-          <P Name="IsTabbed" Class="logical">0</P>
-          <P Name="ViewObjType" Class="char">SimulinkSubsys</P>
-          <P Name="LoadSaveID" Class="char">6884</P>
-          <P Name="Extents" Class="double">[1875.0, 753.0]</P>
-          <P Name="ZoomFactor" Class="double">1.25</P>
-          <P Name="Offset" Class="double">[-0.67619047619086814, -19.774285714285497]</P>
-          <P Name="SceneRectInView" Class="double">[-0.67619047619086814, -19.774285714285497, 1200.0, 481.92]</P>
-        </Object>
-        <Object ObjectID="9">
-          <P Name="IsActive" Class="logical">0</P>
-          <P Name="IsTabbed" Class="logical">0</P>
-          <P Name="ViewObjType" Class="char">SimulinkSubsys</P>
-          <P Name="LoadSaveID" Class="char">7379</P>
-          <P Name="Extents" Class="double">[1875.0, 753.0]</P>
-          <P Name="ZoomFactor" Class="double">1.0</P>
-          <P Name="Offset" Class="double">[-70.532714164929871, -161.66079612184319]</P>
-          <P Name="SceneRectInView" Class="double">[-70.532714164929871, -161.66079612184319, 1500.0, 602.4]</P>
         </Object>
         <Object ObjectID="10">
           <P Name="IsActive" Class="logical">0</P>
@@ -7492,7 +7503,7 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
         <Object ObjectID="16">
           <P Name="Type" Class="char">LibraryBrowser2 LibraryBrowserStudioComponent</P>
           <P Name="ID" Class="char">FBv1_SLOW2DOF</P>
-          <P Name="Visible" Class="logical">0</P>
+          <P Name="Visible" Class="logical">1</P>
           <P Name="CreateCallback" Class="char"/>
           <P Name="UserData" Class="char"/>
           <P Name="Floating" Class="logical">0</P>
@@ -7527,7 +7538,7 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
           <P Name="Minimized" Class="char">Unset</P>
         </Object>
       </Array>
-      <P Name="WindowState" Class="char">AAAA/wAAAAD9AAAAAwAAAAAAAAF/AAADOPwCAAAABPsAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAAAAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD8AAAAlwAAAzgAAAAAAP////r/////AgAAAAL7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAAB5AP////sAAAB2AEwAaQBiAHIAYQByAHkAQgByAG8AdwBzAGUAcgAyACAATABpAGIAcgBhAHIAeQBCAHIAbwB3AHMAZQByAFMAdAB1AGQAaQBvAEMAbwBtAHAAbwBuAGUAbgB0AC8ARgBCAHYAMQBfAFMATABPAFcAMgBEAE8ARgAAAAAA/////wAAAM8A////+wAAAGAAUwBpAG0AdQBsAGkAbgBrADoARQBkAGkAdABvAHIAOgBSAGUAZgBlAHIAZQBuAGMAZQBkAEYAaQBsAGUAcwAvAFIAZQBmAGUAcgBlAG4AYwBlAGQAIABGAGkAbABlAHMAAAAAAP////8AAACnAP///wAAAAEAAAAAAAAAAPwCAAAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZQBjAHQAbwByAAAAAAD/////AAACFgD///8AAAADAAAHgAAAAQP8AQAAAAH7/////wAAAAAAAAAHgAAAAa4A////AAAHgAAAAzgAAAABAAAAAgAAAAEAAAAC/AAAAAA=</P>
+      <P Name="WindowState" Class="char">AAAA/wAAAAD9AAAAAwAAAAAAAAF/AAADOPwCAAAABPsAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAAAAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD8AAAAlwAAAzgAAADPAP////oAAAABAgAAAAL7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAAB5AP////sAAAB2AEwAaQBiAHIAYQByAHkAQgByAG8AdwBzAGUAcgAyACAATABpAGIAcgBhAHIAeQBCAHIAbwB3AHMAZQByAFMAdAB1AGQAaQBvAEMAbwBtAHAAbwBuAGUAbgB0AC8ARgBCAHYAMQBfAFMATABPAFcAMgBEAE8ARgEAAAAA/////wAAAM8A////+wAAAGAAUwBpAG0AdQBsAGkAbgBrADoARQBkAGkAdABvAHIAOgBSAGUAZgBlAHIAZQBuAGMAZQBkAEYAaQBsAGUAcwAvAFIAZQBmAGUAcgBlAG4AYwBlAGQAIABGAGkAbABlAHMAAAAAAP////8AAACnAP///wAAAAEAAAAAAAAAAPwCAAAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZQBjAHQAbwByAAAAAAD/////AAACFgD///8AAAADAAAHgAAAAQP8AQAAAAH7/////wAAAAAA/////wAAAa4A////AAAF/AAAAzgAAAABAAAAAgAAAAEAAAAC/AAAAAA=</P>
       <Array PropName="PersistedApps" Type="Cell" Dimension="0*1"/>
       <P Name="WindowUuid" Class="char">e29b1161-6efe-483c-9cb9-b7cf52a07ad5</P>
     </Object>
