@@ -55,7 +55,7 @@ switch CalculationName
         FlagPITorqueControl         	= 1; % 0: only State Feedback, 1: PI controlled in region 1.5 and 2.5
         
         % Wind speeds
-        v_0         = 3.5:.1:30; % [m/s]
+        v_0         = 3.5:.1:8; % [m/s]
         
         % Region wind speeds produced by HowToFindRegionWindSpeed.m
         % legend  = ["rated"    "1"     "1.5"       "2.5"];
