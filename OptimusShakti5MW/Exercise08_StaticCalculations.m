@@ -6,11 +6,10 @@
 %% 1. Initialitzation 
 clearvars; close all;clc;
 %% 2. Config
-[v_0,FlagPITorqueControl,FlagPS,Parameter]    = StaticCalculationsConfig;
+[v_0,FlagPITorqueControl,Flag1d5opt,Parameter]    = StaticCalculationsConfig;
 
 %% 3. Allocation
-theta_set = 0:deg2rad(0.1):deg2rad(10);
-% v_0 = 5;
+theta_set = 0:deg2rad(0.1):deg2rad(5);
 Omega               = zeros(1,length(theta_set));
 theta               = zeros(1,length(theta_set));
 M_g                 = zeros(1,length(theta_set));
@@ -21,6 +20,7 @@ max_c_p             = zeros(1,length(theta_set));
 max_cp_theta        = zeros(1,length(theta_set));
 max_lambda          = zeros(1,length(theta_set));
 exitflag            = zeros(1,length(theta_set));
+
 % Weilbull parameters
 C                   = 2/sqrt(pi)*7.5;% [m/s] TC III
 k                   = 2;            % [-]
@@ -70,9 +70,24 @@ for iv_0=1:length(v_0)
 
 
         case {'1.5'} %Determin M_g in Region 1.5, where theta and Omega_g is fixed: adjusted by fle (15.11.24)
-            for k = 1:length(theta_set)
-                Omega_j     = Parameter.VSC.Omega_g_1d5/Parameter.Turbine.r_GB;
-                theta_j     = theta_set(k);
+            Omega_j     = Parameter.VSC.Omega_g_1d5/Parameter.Turbine.r_GB;
+
+            if 1 == Flag1d5opt
+                for manni = 1:length(theta_set)
+                    lambda(manni)      = Omega_j*Parameter.Turbine.R/(v_0(iv_0));
+                    c_P(manni)         = interp2(Parameter.Turbine.SS.theta,Parameter.Turbine.SS.lambda,Parameter.Turbine.SS.c_P,theta_set(manni),lambda(manni),'linear',0);
+                end
+                    
+                [value, index] = max(c_P);
+                max_c_p(iv_0) = value;
+                max_cp_theta(iv_0) = theta(index);
+                max_lambda(iv_0) = lambda(index);
+    
+                theta_j     = theta_set(index);
+            else
+                theta_j     = Parameter.CPC.theta_min;
+            end
+
                 M_g_min     = 0;
                 M_g_max     = kOmegaSquare(Omega_j*Parameter.Turbine.r_GB,theta_j,Parameter);
 
@@ -80,26 +95,15 @@ for iv_0=1:length(v_0)
                     fminbnd(@(M_g) (OmegaDot(Omega_j,theta_j,M_g,v_0i,Parameter))^2,...
                     M_g_min,M_g_max,optimset('Display','none'));
 
-                lambda(k)      = Omega_j*Parameter.Turbine.R/(v_0(iv_0));
-                c_P(k)         = interp2(Parameter.Turbine.SS.theta,Parameter.Turbine.SS.lambda,Parameter.Turbine.SS.c_P,theta_set(k),lambda(k),'linear',0);
+            Omega(iv_0) = Omega_j;
+            M_g(iv_0)   = M_g_j;
+            theta(iv_0) = theta_j;
 
-                Omega(k) = Omega_j;
-                M_g(k)   = M_g_j;
-                theta(k) = theta_j;
-            end
-            [value, index] = max(c_P);
-            max_c_p(iv_0) = value;
-            max_cp_theta(iv_0) = theta(index);
-            max_lambda(iv_0) = lambda(index);
         case {'2','StateFeedback'} % Determin Omega and M_g in Region 2 (or 1-2.5 for state feedback), where theta is fixed 
             % Exercise 8.1b: adjusted by fle (12.11.24)
             Omega_min   = rpm2radPs(5); % to avoid Stall
             Omega_max   = Parameter.CPC.Omega_g_rated/Parameter.Turbine.r_GB;
-             if FlagPS ==1 % for peak shaving
-                theta_j     = interp1(Parameter.CPC.PS(:,1),Parameter.CPC.PS(:,2),v_0i);                
-            else
-                theta_j     = Parameter.CPC.theta_min;
-            end
+            theta_j     = Parameter.CPC.theta_min;
            
             [Omega_j,Omega_dot_Sq(iv_0),exitflag(iv_0)] = ...
                 fminbnd(@(Omega) (OmegaDot(Omega,theta_j,v_0i,Parameter))^2,...
@@ -112,11 +116,7 @@ for iv_0=1:length(v_0)
 
         case {'2.5'} %Determin M_g in Region 2.5, where theta and Omega_g is fixed: adjusted by fle (15.11.24)
             Omega_j     = Parameter.CPC.Omega_g_rated/Parameter.Turbine.r_GB;
-            if FlagPS ==1 % for peak shaving
-                theta_j     = interp1(Parameter.CPC.PS(:,1),Parameter.CPC.PS(:,2),v_0i);                
-            else
-                theta_j     = Parameter.CPC.theta_min;
-            end            
+            theta_j     = Parameter.CPC.theta_min;           
             M_g_min     = 0;
             M_g_max     = Parameter.VSC.M_g_rated; % M_g_rated for PS otherwise M_g_max is producing a small overswing in M and P
 
@@ -131,11 +131,7 @@ for iv_0=1:length(v_0)
         case '3' % Determin theta in Region 3, where Omega and M_g are fixed   
             % Exercise 8.1b: adjusted by fle (12.11.24)
             Omega_j     = Parameter.CPC.Omega_g_rated/Parameter.Turbine.r_GB;
-            if FlagPS==1 % for PS
-                theta_min   = Parameter.CPC.theta_PS;
-            else
-                theta_min   = Parameter.CPC.theta_min;
-            end
+            theta_min   = Parameter.CPC.theta_min;
             theta_max   = max(Parameter.Turbine.SS.theta(:));
             M_g_j       = Parameter.VSC.M_g_rated;
 
@@ -162,9 +158,9 @@ Distribution    = k/C*(v_0/C).^(k-1).*exp(-(v_0/C).^k);
 Weights         = Distribution/sum(Distribution); % relative frequency
 
 
-if FlagPS == 1
-    AEP_PS = sum(P.*Weights)*8760;
-    save("SteadyStatesShakti5MW_PS.mat","v_0","Omega","M_g","theta","x_T","P","AEP_PS")
+if  1 == Flag1d5opt
+    AEP_1d5opt = sum(P.*Weights)*8760;
+    save("SteadyStatesShakti5MW_PS.mat","v_0","Omega","M_g","theta","x_T","P","AEP_1d5opt")
 else
     AEP_classic = sum(P.*Weights)*8760;
     save("SteadyStatesShakti5MW_classic.mat","v_0","Omega","M_g","theta","x_T","P","AEP_classic")
@@ -215,11 +211,13 @@ xlim([0 30])
 xlabel('pitch [deg]')
 ylabel('lambda [-]')
 
-figure
-hold on;grid on;box on
-title('power coefficient')
-contour(rad2deg(Parameter.Turbine.SS.theta),Parameter.Turbine.SS.lambda,max(Parameter.Turbine.SS.c_P,-0.1),[0,0.1:.1:0.4,0.45,0.465],'ShowText','on')
-plot(rad2deg(max_cp_theta),max_lambda,'k.')
-xlim([0 30])
-xlabel('pitch [deg]')
-ylabel('lambda [-]')
+%%
+figure('Name','P')
+hold on;grid on;box on;
+load("SteadyStatesShakti5MW_classic.mat");
+plot(v_0,P,'.')
+load("SteadyStatesShakti5MW_PS.mat")
+plot(v_0,P,'.')
+xlabel('v_0 [m/s]')
+ylabel('P [W]')
+legend('classic','1.5 cp opt')

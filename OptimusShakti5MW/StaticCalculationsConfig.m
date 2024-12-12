@@ -33,12 +33,12 @@
 %
 % (c) Universitaet Stuttgart
 
-function [v_0,FlagPITorqueControl,FlagPS,Parameter] = StaticCalculationsConfig
+function [v_0,FlagPITorqueControl,Flag1d5opt,Parameter] = StaticCalculationsConfig
 
 
 CalculationName  = 'NREL5MW_FBSWE'; 
 
-FlagPS           = 0; % Peak shaving 1 = on, 0 = off
+Flag1d5opt           = 1; % 1d5 pitch opt calc 1 = on, 0 = off
 
 switch CalculationName
 
@@ -55,7 +55,7 @@ switch CalculationName
         FlagPITorqueControl         	= 1; % 0: only State Feedback, 1: PI controlled in region 1.5 and 2.5
         
         % Wind speeds
-        v_0         = 3.5:.1:8; % [m/s]
+        v_0         = 2.7:.1:25; % [m/s]
         
         % Region wind speeds produced by HowToFindRegionWindSpeed.m
         % legend  = ["rated"    "1"     "1.5"       "2.5"];
