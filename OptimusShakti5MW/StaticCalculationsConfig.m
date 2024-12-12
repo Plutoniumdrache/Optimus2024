@@ -33,12 +33,13 @@
 %
 % (c) Universitaet Stuttgart
 
-function [v_0,FlagPITorqueControl,Flag1d5opt,Parameter] = StaticCalculationsConfig
+function [v_0,FlagPITorqueControl,Flag1d5opt,FlagThetaMin,Parameter] = StaticCalculationsConfig
 
 
 CalculationName  = 'NREL5MW_FBSWE'; 
 
-Flag1d5opt           = 1; % 1d5 pitch opt calc 1 = on, 0 = off
+Flag1d5opt           = 0; % 1d5 pitch opt calc 1 = on, 0 = off
+FlagThetaMin         = 0; % theta min pitch opt calc 1 = on, 0 = off
 
 switch CalculationName
 
@@ -55,14 +56,15 @@ switch CalculationName
         FlagPITorqueControl         	= 1; % 0: only State Feedback, 1: PI controlled in region 1.5 and 2.5
         
         % Wind speeds
-        v_0         = 2.7:.1:25; % [m/s]
+        v_0         = 2.7:.1:30; % [m/s]
         
         % Region wind speeds produced by HowToFindRegionWindSpeed.m
         % legend  = ["rated"    "1"     "1.5"       "2.5"];
         % v_regions = [ 9.5775    3.0345    6.3874    9.3838]; % [m/s] 3.4 Turbine works well
 %         v_regions = [9.3772    2.7049    6.0905    8.6992];     % [m/s] 5MW SHAKTI, C_p Version 5 Omega_g_rated = 428.5 rpm, Including eta_GB, from fle 26/11/24
         v_regions = [9.3803    2.7008    6.0768    8.6797]; % 10.12.2024 after slight inertia and gb adjustments
-        
+%         v_regions = [9.3531    2.7070    6.0652    8.6631];
+
         % find v_rated
         v_0_min                         = 0;
         v_0_max                         = 30;        

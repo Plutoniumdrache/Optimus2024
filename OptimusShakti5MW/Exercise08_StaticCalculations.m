@@ -6,7 +6,7 @@
 %% 1. Initialitzation 
 clearvars; close all;clc;
 %% 2. Config
-[v_0,FlagPITorqueControl,Flag1d5opt,Parameter]    = StaticCalculationsConfig;
+[v_0,FlagPITorqueControl,Flag1d5opt,FlagThetaMin,Parameter]    = StaticCalculationsConfig;
 
 %% 3. Allocation
 theta_set = 0:deg2rad(0.1):deg2rad(5);
@@ -100,10 +100,25 @@ for iv_0=1:length(v_0)
             theta(iv_0) = theta_j;
 
         case {'2','StateFeedback'} % Determin Omega and M_g in Region 2 (or 1-2.5 for state feedback), where theta is fixed 
+            if 1 == FlagThetaMin
+                for manni = 1:length(theta_set)
+                    lambda(manni)      = Omega_j*Parameter.Turbine.R/(v_0(iv_0));
+                    c_P(manni)         = interp2(Parameter.Turbine.SS.theta,Parameter.Turbine.SS.lambda,Parameter.Turbine.SS.c_P,theta_set(manni),lambda(manni),'linear',0);
+                end
+                    
+                [value, index] = max(c_P);
+                max_c_p(iv_0) = value;
+                max_cp_theta(iv_0) = theta(index);
+                max_lambda(iv_0) = lambda(index);
+    
+                theta_j     = theta_set(index);
+            else
+                theta_j     = Parameter.CPC.theta_min;
+            end
+
             % Exercise 8.1b: adjusted by fle (12.11.24)
             Omega_min   = rpm2radPs(5); % to avoid Stall
             Omega_max   = Parameter.CPC.Omega_g_rated/Parameter.Turbine.r_GB;
-            theta_j     = Parameter.CPC.theta_min;
            
             [Omega_j,Omega_dot_Sq(iv_0),exitflag(iv_0)] = ...
                 fminbnd(@(Omega) (OmegaDot(Omega,theta_j,v_0i,Parameter))^2,...
@@ -220,4 +235,4 @@ load("SteadyStatesShakti5MW_PS.mat")
 plot(v_0,P,'.')
 xlabel('v_0 [m/s]')
 ylabel('P [W]')
-legend('classic','1.5 cp opt')
+legend('classic','adjusted theta')
