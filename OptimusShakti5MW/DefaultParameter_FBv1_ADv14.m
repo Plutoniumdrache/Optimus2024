@@ -7,7 +7,7 @@ Parameter.CPC.kp                        = 0.025;                          	% [s]
 Parameter.CPC.Ti                        = 10;                               % [s]       % integral gain, brute-force-optimized
 
 Parameter.CPC.Omega_g_rated             = rpm2radPs(428.5);                 % [rad/s]   % rated generator speed, from Shakti - Geno team 24/11/24 fle
-Parameter.CPC.theta_min                 = deg2rad(1.2);                     % [rad]     % pitch angle in region 1-2.5, brute-force optimized
+Parameter.CPC.theta_min                 = deg2rad(0.5);                     % [rad]     % pitch angle in region 1-2.5, brute-force optimized
 %% Torque Controller
 Parameter.VSC.kp                        = 27928.661741;                     % [Nm/(rad/s)]  % proportional gain, first guess (adjusted shakti 10.12 task design script with generator inertia, JP)
 Parameter.VSC.Ti                        = 2.196201;                         % [s]           % integral gain, first guess (adjusted shakti 10.12 task design script with generator inertia, JP)

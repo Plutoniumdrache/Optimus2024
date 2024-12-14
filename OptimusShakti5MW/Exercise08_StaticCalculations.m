@@ -176,6 +176,9 @@ Weights         = Distribution/sum(Distribution); % relative frequency
 if  1 == Flag1d5opt
     AEP_1d5opt = sum(P.*Weights)*8760;
     save("SteadyStatesShakti5MW_PS.mat","v_0","Omega","M_g","theta","x_T","P","AEP_1d5opt")
+elseif  1 == FlagThetaMin
+    AEP_ThetaMinOpt = sum(P.*Weights)*8760;
+    save("SteadyStatesShakti5MW_ThetaMinOpt.mat","v_0","Omega","M_g","theta","x_T","P","AEP_ThetaMinOpt")
 else
     AEP_classic = sum(P.*Weights)*8760;
     save("SteadyStatesShakti5MW_classic.mat","v_0","Omega","M_g","theta","x_T","P","AEP_classic")
@@ -229,9 +232,9 @@ ylabel('lambda [-]')
 %%
 figure('Name','P')
 hold on;grid on;box on;
-load("SteadyStatesShakti5MW_classic.mat");
+load("SteadyStatesShakti5MW_classic0deg.mat")
 plot(v_0,P,'.')
-load("SteadyStatesShakti5MW_PS.mat")
+load("SteadyStatesShakti5MW_classic.mat");
 plot(v_0,P,'.')
 xlabel('v_0 [m/s]')
 ylabel('P [W]')
