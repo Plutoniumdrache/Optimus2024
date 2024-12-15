@@ -10,16 +10,16 @@ clearvars; close all;clc;
 
 %% 3. Allocation
 theta_set = 0:deg2rad(0.1):deg2rad(5);
-Omega               = zeros(1,length(theta_set));
-theta               = zeros(1,length(theta_set));
-M_g                 = zeros(1,length(theta_set));
-Omega_dot_Sq        = zeros(1,length(theta_set));
-lambda              = zeros(1,length(theta_set));
-c_P                 = zeros(1,length(theta_set));
-max_c_p             = zeros(1,length(theta_set));
-max_cp_theta        = zeros(1,length(theta_set));
-max_lambda          = zeros(1,length(theta_set));
-exitflag            = zeros(1,length(theta_set));
+Omega               = zeros(1,length(v_0));
+theta               = zeros(1,length(v_0));
+M_g                 = zeros(1,length(v_0));
+Omega_dot_Sq        = zeros(1,length(v_0));
+lambda              = zeros(1,length(v_0));
+c_P                 = zeros(1,length(v_0));
+max_c_p             = zeros(1,length(v_0));
+max_cp_theta        = zeros(1,length(v_0));
+max_lambda          = zeros(1,length(v_0));
+exitflag            = zeros(1,length(v_0));
 
 % Weilbull parameters
 C                   = 2/sqrt(pi)*7.5;% [m/s] TC III
