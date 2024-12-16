@@ -181,7 +181,7 @@ elseif  1 == FlagThetaMin
     save("SteadyStatesShakti5MW_ThetaMinOpt.mat","v_0","Omega","M_g","theta","x_T","P","AEP_ThetaMinOpt")
 else
     AEP_classic = sum(P.*Weights)*8760;
-    save("SteadyStatesShakti5MW_classic.mat","v_0","Omega","M_g","theta","x_T","P","AEP_classic")
+    save("SteadyStatesShakti5MW_classic_IECrho.mat","v_0","Omega","M_g","theta","x_T","P","AEP_classic")
 end 
 %% 6. Plot
 figure('Name','Omega')
@@ -210,9 +210,9 @@ ylabel('x_T [m]')
 
 figure('Name','P')
 hold on;grid on;box on;
-plot(v_0,P,'.')
+plot(v_0,P/1e6,'.')
 xlabel('v_0 [m/s]')
-ylabel('P [W]')
+ylabel('P [MW]')
 
 figure('Name','Torque Controller')
 hold on;grid on;box on;
@@ -232,10 +232,10 @@ ylabel('lambda [-]')
 %%
 figure('Name','P')
 hold on;grid on;box on;
-load("SteadyStatesShakti5MW_classic0deg.mat")
+load("SteadyStatesShakti5MW_classic.mat")
 plot(v_0,P,'.')
-load("SteadyStatesShakti5MW_classic.mat");
+load("SteadyStatesShakti5MW_classic_IECrho.mat");
 plot(v_0,P,'.')
 xlabel('v_0 [m/s]')
 ylabel('P [W]')
-legend('classic','adjusted theta')
+legend('\rho 1.12 [kg/m^3]','\rho 1.225 [kg/m^3]')

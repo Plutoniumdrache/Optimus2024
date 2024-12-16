@@ -65,6 +65,7 @@ switch CalculationName
 %         v_regions = [9.3803    2.7008    6.0768    8.6797]; % 10.12.2024 after slight inertia and gb adjustments 
         v_regions = [9.3531    2.7070    6.0652    8.6631]; % theta min 0.5 deg
 %         v_regions = [9.3533    2.7844    6.0739    8.6755]; % theta min 0 deg
+%         v_regions = [9.0462    2.7070    6.0652    8.6631]; % theta min 0.5 deg, rho = 1.225
 
         % find v_rated
         v_0_min                         = 0;
