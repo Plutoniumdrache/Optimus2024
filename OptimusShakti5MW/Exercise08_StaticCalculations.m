@@ -181,7 +181,7 @@ elseif  1 == FlagThetaMin
     save("SteadyStatesShakti5MW_ThetaMinOpt.mat","v_0","Omega","M_g","theta","x_T","P","AEP_ThetaMinOpt")
 else
     AEP_classic = sum(P.*Weights)*8760;
-    save("SteadyStatesShakti5MW_classic_IECrho.mat","v_0","Omega","M_g","theta","x_T","P","AEP_classic")
+    save("SteadyStatesShakti5MW_classic.mat","v_0","Omega","M_g","theta","x_T","P","AEP_classic")
 end 
 %% 6. Plot
 figure('Name','Omega')
@@ -225,9 +225,11 @@ hold on;grid on;box on
 title('power coefficient')
 contour(rad2deg(Parameter.Turbine.SS.theta),Parameter.Turbine.SS.lambda,max(Parameter.Turbine.SS.c_P,-0.1),[0,0.1:.1:0.4,0.45,0.465],'ShowText','on')
 plot(rad2deg(theta),lambda,'k.')
+% plot(0.5,8.63784852687146,'-o','MarkerFaceColor','red','MarkerEdgeColor','red')
 xlim([0 30])
 xlabel('pitch [deg]')
 ylabel('lambda [-]')
+% legend('','\theta_{min} = 0 deg','\theta_{min} = theta_{min-opt} = 0.5 deg')
 
 %%
 figure('Name','P')
