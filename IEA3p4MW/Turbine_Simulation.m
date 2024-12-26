@@ -20,7 +20,7 @@ Parameter.Time.TMax             = 25*3600;   % [s] simulation length
 
 %% Loop over Operation Points
 
-OPs = [20];
+OPs = [12];
 nOP = length(OPs);
 
 for iOP=1:nOP
@@ -58,7 +58,7 @@ end
 figure
 subplot(411)
 hold on;box on;grid on;
-plot(simout.tout,v_0)
+plot(simout.tout./3600,v_0)
 ylabel('v_0 [m/s]')
 legend(strcat(num2str(OPs'),' m/s')) 
 
@@ -67,18 +67,18 @@ title("Scenario " + Select_str)
 
 subplot(412)
 hold on;box on;grid on;
-plot(simout.tout,P_dem./1000)
+plot(simout.tout./3600,P_dem./1000)
 ylabel('P_{dem} [MW]')
 
 subplot(413)
 hold on;box on;grid on;
-plot(simout.tout,Power_el./1000)
+plot(simout.tout./3600,Power_el./1000)
 ylabel('Power [kW]')
 % legend(strcat(num2str(OPs'),' m/s'))
 
 subplot(414)
 hold on;box on;grid on;
-plot(simout.tout,Energy_el./Parameter.Storage.Capacity*100)
+plot(simout.tout./3600,Energy_el./Parameter.Storage.Capacity*100)
 ylabel('Storage Lvl. [%]')
-xlabel('Time [s]')
+xlabel('Time [h]')
 % legend(strcat(num2str(OPs'),' m/s')) 
