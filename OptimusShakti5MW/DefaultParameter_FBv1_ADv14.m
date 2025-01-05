@@ -12,10 +12,10 @@ Parameter.CPC.theta_min                 = deg2rad(0.5);                     % [r
 Parameter.VSC.kp                        = 27928.661741;                     % [Nm/(rad/s)]  % proportional gain, first guess (adjusted shakti 10.12 task design script with generator inertia, JP)
 Parameter.VSC.Ti                        = 2.196201;                         % [s]           % integral gain, first guess (adjusted shakti 10.12 task design script with generator inertia, JP)
 % Parameter.VSC.k                         = 1.9;                              % [Nm/(rad/s)^2]% gain region 2, brute-force-optimized
-% Parameter.VSC.k                         = .5 * Parameter.General.rho * pi ... % [Nm/(rad/s)^2]% gain region 2, first guess: cp 0.48, lambda 8.75
-%                                           * Parameter.Turbine.R^5 * .48 / ...
-%                                           (8.75^3 * Parameter.Turbine.r_GB^3);
-Parameter.VSC.k                         = 42.6;
+Parameter.VSC.k                         = .5 * Parameter.General.rho * pi ... % [Nm/(rad/s)^2]% gain region 2, first guess: cp 0.48, lambda 8.75
+                                          * Parameter.Turbine.R^5 * .48 / ...
+                                          (8.75^3 * Parameter.Turbine.r_GB^3);
+% Parameter.VSC.k                         = 42.6;
 
 P_a_rated  = 5.42e6;                                                        % [W]       % maximal aerodynamic power (can be changed for de- or up-rating), from Shakti(presentation week8) 20/11/24 fle
 Parameter.VSC.M_g_rated                 = P_a_rated/Parameter.CPC.Omega_g_rated*Parameter.Turbine.eta_gb;  % [Nm] rated generator torque, from Shakti 21/11/24 fle

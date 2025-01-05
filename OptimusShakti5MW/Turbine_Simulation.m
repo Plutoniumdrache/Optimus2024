@@ -3,7 +3,7 @@
 % Exercise 03 of "Controller Design for Wind Turbines and Wind Farms"
 % -----------------------------
 
-clearvars;clc;
+clearvars;clc;close all
 
 %% PreProcessing SLOW for all simulations
 
@@ -13,14 +13,14 @@ Parameter                       = DefaultParameter_PitchActuator(Parameter);
 Parameter                       = DefaultParameter_FBv1_ADv14(Parameter);
 
 % Time
-dt                              = 1/80;
+dt                              = 1/60;
 Parameter.Time.dt               = dt;   % [s] simulation time step              
-Parameter.Time.TMax             = 80;   % [s] simulation length
+Parameter.Time.TMax             = 120;   % [s] simulation length
 
 %% Loop over Operation Points
 
-OPs = [10];
-step = 0.1;
+OPs = [7];%[12 14 16 18];
+step = 1;
 nOP = length(OPs);
 
 for iOP=1:nOP
@@ -29,7 +29,7 @@ for iOP=1:nOP
     OP = OPs(iOP);
 
     % wind for this OP
-    Disturbance.v_0.time            = [0; 30; 30+dt;  60];       % [s]      time points to change wind speed
+    Disturbance.v_0.time            = [0; 10; 10+dt;  120];       % [s]      time points to change wind speed
     Disturbance.v_0.signals.values  = [0;  0;  step; step]+OP;    % [m/s]    wind speeds
 
     % Initial Conditions from SteadyStates for this OP
@@ -92,39 +92,50 @@ tout = simout.tout;
 % fclose(fid);
 %% PostProcessing SLOW
 figure
-
-subplot(611)
-hold on;box on;grid on;
-plot(tout,Omega*60/2/pi)
-ylabel('\Omega [rpm]')
-legend(strcat(num2str(OPs'),' m/s'))
-
-subplot(612)
-hold on;box on;grid on;
-plot(tout,rad2deg(theta))
-ylabel('\theta [°]')
-legend(strcat(num2str(OPs'),' m/s'))
-
-subplot(613)
-hold on;box on;grid on;
-plot(tout,M_g./1000)
-ylabel('M_g [kNm]')
-legend(strcat(num2str(OPs'),' m/s'))
-
-subplot(614)
-hold on;box on;grid on;
-plot(tout,Power_el./1000)
-ylabel('Power [kW]')
-legend(strcat(num2str(OPs'),' m/s'))
-
-subplot(615)
+subplot(211)
 hold on;box on;grid on;
 plot(tout,v_0)
 ylabel('v_0 [m/s]')
+
+
+subplot(212)
+hold on;box on;grid on;
+plot(tout,Omega*60/2/pi)
+ylabel('\Omega [rpm]')
+xlabel('t [s]')
 legend(strcat(num2str(OPs'),' m/s'))
 
-subplot(616)
-hold on;box on;grid on;
-plot(tout,x_T)
-ylabel('x_T [m]')
-legend(strcat(num2str(OPs'),' m/s')) 
+% subplot(411)
+% hold on;box on;grid on;
+% plot(tout,v_0)
+% ylim([6 9])
+% ylabel('v_0 [m/s]')
+% 
+% subplot(412)
+% hold on;box on;grid on;
+% plot(tout,Omega*60/2/pi)
+% ylim([6 8])
+% ylabel('\Omega [rpm]')
+% 
+% subplot(413)
+% hold on;box on;grid on;
+% plot(tout,M_g./1000)
+% ylim([50 90])
+% ylabel('M_g [kNm]')
+% 
+% subplot(414)
+% hold on;box on;grid on;
+% plot(tout,lambda)
+% ylim([7 9])
+% ylabel('\lambda [-]')
+
+% subplot(615)
+% hold on;box on;grid on;
+% 
+% legend(strcat(num2str(OPs'),' m/s'))
+% 
+% subplot(616)
+% hold on;box on;grid on;
+% plot(tout,x_T)
+% ylabel('x_T [m]')
+% legend(strcat(num2str(OPs'),' m/s')) 

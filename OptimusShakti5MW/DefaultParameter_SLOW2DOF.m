@@ -17,7 +17,7 @@ Parameter.Turbine.J                	= J_R+J_G*Parameter.Turbine.r_GB^2;
 Parameter.Turbine.eta_gb            = 0.955;            % [-]       Gearbox efficiency, from ElastoDyn.dat: GBoxEff
 
 % fore-aft tower dynamics  
-d_s                                 = 0.01;             % [-]       Structural Damping ratio from ElastoDyn_Tower.dat (shakti 29.11 DLC 1.2 FAST, JP)
+d_s                                 = 0.01*100;             % [-]       Structural Damping ratio from ElastoDyn_Tower.dat (shakti 29.11 DLC 1.2 FAST, JP)
 f_0TwFADOF1                         = 0.305;            % [Hz]      Undamped tower fore-aft eigenfrequency, from Bortolotti2019
 Parameter.Turbine.x_T0           	= -0.0880;          % [m]       static tower top displacement, from steady states
 Parameter.Turbine.k_Te            	= 1.81e+06;         % [kg/s^2]  tower equivalent bending stiffness, from steady states
